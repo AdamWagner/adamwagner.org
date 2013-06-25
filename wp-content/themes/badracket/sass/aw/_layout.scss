@@ -1,0 +1,64 @@
+%page-width {
+	margin:auto;
+	max-width:750px;
+	width:95%;
+}
+
+.group:before,
+.group:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.group:after { clear: both;}
+
+.grid {
+  @extend .group;
+  float:left;
+}
+
+.padded .grid { 
+  padding:0.35em;
+}
+
+.in35 {
+	padding-left:0.35em;
+	padding-right:0.35em;
+}
+
+
+@mixin iceCreamGrid($prefix, $count, $width: default) {
+  @if $width == default {
+    @for $i from 1 through $count {
+      .#{$prefix}-#{$i} .grid, .#{$prefix}-#{$i}  {  width: unquote((100 / $i) + '%') }
+    }
+  } @else {
+    @include at-least($width) {
+       @for $i from 1 through $count {
+        .#{$prefix}-#{$i} .grid, .#{$prefix}-#{$i} { width: unquote((100 / $i)  + '%') }
+      }   
+    }
+  }
+}
+
+
+@include iceCreamGrid(s, 3);
+@include iceCreamGrid(m, 3, 481px);
+@include iceCreamGrid(b, 3, 768px);
+
+@include at-least(481px){
+    @include grid-setup("m-");
+}
+
+@include at-least(768px){
+    @include grid-setup("b-");
+}
+
+
+
+
+
+@include until(481px) { .hide-small { display:none; } }
+@include until(768px) { .hide-medium { display:none; } }
+@include until(900px) { .hide-before-medium { display:none; } }
+@include until(1023px) { .hide-big { display:none; } }

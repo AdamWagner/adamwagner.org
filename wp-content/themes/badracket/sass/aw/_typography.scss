@@ -1,0 +1,58 @@
+@mixin font-stack-sans {
+  font-family: Helvetica, Arial, sans-serif;
+  // -webkit-font-smoothing:antialiased;
+  font-weight: normal;
+  font-style: normal;
+  font-variant:normal;
+}
+
+@mixin font-stack-serif {
+  font-family: Georgia, sans-serif;
+  // -webkit-font-smoothing:antialiased;
+  font-weight: normal;
+  font-style: normal;
+  font-variant:normal;
+}
+
+@mixin type--small {
+	font-size: 0.775em;
+}
+
+.type--small {
+	@include type--small();
+	margin-bottom:1em;
+
+	h2 + & { margin-top:0.41em }
+	a + & { margin-top:0.41em }
+}
+
+.headline--flush {
+	line-height:1em;
+	margin:0;
+}
+
+@mixin type--bold {
+	font-weight:bold;
+}
+
+b, strong, .bold {
+	@include type--bold();
+}
+
+@mixin muted($color) {
+	color:transparentize($color,0.4);
+}
+
+.muted--dark {
+	@include muted($dark);
+}
+
+.lead {
+	font-size:1.15em;
+	line-height:1.625em;
+	margin-bottom:2em;
+}
+
+.text--underline {
+	text-decoration:underline;
+}

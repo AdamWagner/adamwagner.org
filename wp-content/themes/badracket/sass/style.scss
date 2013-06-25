@@ -1,0 +1,198 @@
+@charset "UTF-8";
+
+/**
+ * Setup
+ */
+@import 'compass';
+@import "vars";
+@import "inuit";
+
+
+$dark: #2b222e;
+
+/* adamwagner.org */
+@import "aw/breakpoints";
+@import "aw/layout";
+@import "aw/typography";
+@import "aw/carousel";
+
+
+
+
+
+%full-image {
+  height:100%;
+  width:100%;
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center;
+}
+
+
+html {
+	
+}
+
+
+
+$fade:1s;
+
+body {
+  @include at-least(900px) { padding:1.1%; }
+	width:100%;
+  background-color:$red;
+  @include transition($fade background-color, $fade color, $fade / 4 padding);
+  &.single-project { @include transition(0s background-color, $fade color, $fade / 4 padding);  }
+  color:$dark;
+}
+
+/* background image */
+.bg {
+  @extend %full-image;
+  display:block;
+  position:fixed!important;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  pointer-events:none; // allow scroll when not over content
+  z-index:-1;
+  @include transition(opacity .2s);
+}
+
+
+.page-wrap {
+  background:lighten($cream,4%);
+  @include transition($fade background);
+  padding: 2% 5%; 
+  @include at-least(600px) { padding:2.5% 5%; }
+  // @include at-least(768px) { padding:0; }
+}
+
+.main-content {
+  @extend %page-width;
+}
+
+
+.colorable {
+  @include transition($fade color);
+
+  .single-project & {
+    @include transition(0s color);
+  }
+}
+
+
+
+
+.ratio-8-5 { padding-bottom:62.5%; background:blue; width:100%; /* 9/16*100 */ }
+
+
+
+.lazyload-wrapper {
+
+	background:$cream;
+	line-height:0;
+
+
+	.lazyload {
+		width:100%;
+		opacity:0;
+		@include transition(.2s opacity);
+		&.loaded {  opacity:1; }
+			
+	}
+}
+
+
+.border-top { border-top: solid 1px transparentize($dark,0.8); }
+.border-bottom { border-bottom: solid 1px transparentize($dark,0.8); }
+.border-left { border-left: solid 1px transparentize($dark,0.8); }
+
+.metadata {
+  @include type--small();
+  @include muted($dark);
+  margin-bottom:5em;
+  @include at-least(768px){ margin-bottom:8em; }
+  @extend .border-bottom;
+  @extend .group;
+  padding:0.5em 0;
+
+  .border-left { padding-left:1em; }
+}
+
+.lazyload-wrapper {
+    @include box-shadow(0 1px 3px transparentize(black,0.8));
+    width:99%;
+    margin:auto;
+  
+  // position:relative;
+  // &:before {
+  //   content:'';
+  //   position:absolute;
+  //   top:0;
+  //   bottom:0;
+  //   left:0;
+  //   right:0;
+  //   display:block;
+  //   @include box-shadow(inset 0 0 0 3px transparentize(black,0.7));
+  // }
+}
+
+header {
+	padding:7% 0;
+}
+
+
+.main {
+  margin-top:3em;
+}
+
+
+.project {
+  h3, p { opacity:0.9 }
+  .project-description { 
+    @include font-stack-serif();
+  }
+  .project-header {
+    @include font-stack-sans();
+    border-bottom:solid 1px transparentize($dark,0.8);
+  }
+  a.project--headline { color:$dark!important; }
+}
+
+.nav--fit{
+    display:table;
+    float:right;
+    width:60%;
+
+    > li{ text-align:right; }
+
+    .nav--projects { 
+      width:36%;
+      @include transition(.2s width);
+      @include at-least(768px) {
+        width:34%
+      }
+    }
+
+}
+
+@import 'aw/project-detail';
+
+footer {
+  margin-top:8em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

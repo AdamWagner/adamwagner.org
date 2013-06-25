@@ -1,0 +1,7 @@
+.group:before,
+.group:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.group:after { clear: both;}

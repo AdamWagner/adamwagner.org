@@ -1,0 +1,11 @@
+
+
+.project--nav {
+	position:absolute;
+	top:0.5em;
+
+	@include at-least(768px) {
+		&.project--nav__back { left:-2em; }
+		&.project--nav__forward { right:-2em; }
+	}
+}

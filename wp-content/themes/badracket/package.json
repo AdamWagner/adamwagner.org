@@ -1,0 +1,18 @@
+{
+  "name": "brv5",
+  "version": "5.0.0",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.5.4",
+    "grunt-contrib-nodeunit": "~0.1.2",
+    "grunt-contrib-uglify": "~0.2.1",
+    "grunt-cachebuster": "~0.1.4",
+    "grunt-hashres": "~0.3.2",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt-sass": "~0.6.0",
+    "grunt-contrib-compass": "~0.2.0",
+    "grunt-devtools": "~0.1.0-7"
+  }
+}
